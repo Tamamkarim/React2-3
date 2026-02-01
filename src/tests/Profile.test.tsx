@@ -1,18 +1,20 @@
 
+
 import {render, screen} from '@testing-library/react';
-import Profile from '../views/Profile';
+import ProfileView from '../views/Profile';
+import ProfileComponent from '../components/Profile';
 import { expect, test } from 'vitest';
+import '@testing-library/jest-dom';
 
-test('renders correct content for the headline', () => {
+test('renders headline for Profile view', () => {
+  render(<ProfileView />);
+  const heading = screen.getByRole('heading', { level: 2 });
+  expect(heading).toHaveTextContent(/profile/i);
+});
 
-  // render the Profile component in jsdom (simulated browser)
-  render(<Profile />);
-
-  // find the element with the text 'Profile'
-  const element = screen.getByText(
-    'Profile',
-  );
-
-  // check that the element is found (not undefined)
-  expect(element).toBeDefined();
+test('renders headline and content for Profile component', () => {
+  render(<ProfileComponent />);
+  const heading = screen.getByRole('heading', { level: 2 });
+  expect(heading).toHaveTextContent(/profile/i);
+  expect(screen.getByText(/your profile/i)).toBeInTheDocument();
 });
