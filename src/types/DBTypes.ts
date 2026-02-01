@@ -10,3 +10,10 @@ export type MediaItem = {
   created_at: string;
   screenshots: string[];
 };
+
+export type MediaItemWithOwner = MediaItem & { username: string };
+
+export type UserWithNoPassword = {
+  username: string;
+  // add other user fields as needed, except password
+};
