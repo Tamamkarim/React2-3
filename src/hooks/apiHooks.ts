@@ -47,4 +47,41 @@ const useMedia = () => {
   return {mediaArray};
 };
 
-export {useMedia};
+// Dummy useAuthentication hook for login functionality
+import type {Credentials, RegisterCredentials} from '../types/LocalTypes';
+
+const useAuthentication = () => {
+  // Simulate login API call
+  const postLogin = async (credentials: Credentials) => {
+    // Replace with real API call
+    return {
+      token: 'dummy-token',
+      user: { username: credentials.username },
+    };
+  };
+  return { postLogin };
+};
+
+// Dummy useUser hook for registration + user retrieval functionality
+const useUser = () => {
+  // Simulate register API call
+  const postRegister = async (credentials: RegisterCredentials) => {
+    // Replace with real API call
+    return {
+      success: true,
+      user: { username: credentials.username, email: credentials.email },
+    };
+  };
+
+  // Simulate retrieving user by token
+  const getUserByToken = async (token: string) => {
+    // Replace with real API call that validates token
+    // For now return a dummy user
+    const user: UserWithNoPassword = { username: token === 'dummy-token' ? 'demo-user' : 'unknown' };
+    return { user };
+  };
+
+  return { postRegister, getUserByToken };
+};
+
+export {useMedia, useAuthentication, useUser};

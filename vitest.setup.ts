@@ -1,8 +1,7 @@
-import {afterEach} from 'vitest';
-import {cleanup} from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
+/// <reference types="vitest/config" />
+import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react-swc';
 
-// reset jsdom (simulated browser) after each test
-afterEach(() => {
-  cleanup();
-});
+// https://vite.dev/config/
+// This file should only contain Vitest setup code, not Vite config.
+// Remove any Vite or test config from here.

@@ -1,13 +1,14 @@
-
 //import './App.css';
 
-import {Route, BrowserRouter as Router, Routes} from 'react-router-dom';
+import {Route, BrowserRouter as Router, Routes} from 'react-router';
 import Layout from './components/Layout';
-import Home from './components/Home';
+import Home from './views/Home';
 import Profile from './views/Profile';
 import Upload from './views/Upload';
 import Single from './views/Single';
 import Example from './views/Example';
+import Login from './views/Login';
+import Logout from './views/Logout';
 
 const App = () => {
   return (
@@ -20,6 +21,8 @@ const App = () => {
             <Route path="/upload" element={<Upload />} />
             <Route path="/single" element={<Single />} />
             <Route path="/example" element={<Example />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
           </Route>
         </Routes>
       </Router>
