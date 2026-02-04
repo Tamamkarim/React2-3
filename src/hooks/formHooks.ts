@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 
 const useForm = (callback: () => void, initState: Record<string, string>) => {
@@ -25,6 +26,7 @@ const useForm = (callback: () => void, initState: Record<string, string>) => {
     handleSubmit,
     handleInputChange,
     inputs,
+    setInputs,
   };
 };
 
