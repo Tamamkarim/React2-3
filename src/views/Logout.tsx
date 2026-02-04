@@ -1,5 +1,19 @@
+// import {Navigate} from 'react-router';
+import {useUserContext} from '../hooks/ContextHooks.ts';
+
 const Logout = () => {
-  return <div>Logout (TODO: implement logout, clear localstorage, redirect to login page)</div>;
+  const {handleLogout} = useUserContext();
+  handleLogout();
+
+  return (
+    <>
+      <p>Logout</p>
+      {/*
+      // declarative
+      <Navigate to={'/'} />
+      */}
+    </>
+  );
 };
 
 export default Logout;

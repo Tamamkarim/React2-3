@@ -14,6 +14,9 @@ export type MediaItem = {
 export type MediaItemWithOwner = MediaItem & { username: string };
 
 export type UserWithNoPassword = {
+  user_id?: number;
   username: string;
-  // add other user fields as needed, except password
+  email?: string;
+  level_name?: string;
+  created_at?: string;
 };
