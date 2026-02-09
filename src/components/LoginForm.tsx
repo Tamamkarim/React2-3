@@ -1,13 +1,7 @@
 import {useNavigate} from 'react-router';
 import {useAuthentication} from '../hooks/apiHooks';
 import useForm from '../hooks/formHooks';
-import type {Credentials} from '../types/LocalTypes';
-
-// Define LoginResponse type locally
-type LoginResponse = {
-  token: string;
-  user: { username: string };
-};
+import type {Credentials, LoginResponse} from '../types/LocalTypes';
 
 const LoginForm = () => {
   const navigate = useNavigate();
