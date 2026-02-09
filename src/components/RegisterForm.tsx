@@ -8,6 +8,7 @@ const RegisterForm = () => {
   const [usernameAvailable, setUsernameAvailable] = useState<boolean>(true);
   const [emailAvailable, setEmailAvailable] = useState<boolean>(true);
   const [registerError, setRegisterError] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
 
   const initValues: RegisterCredentials = {
     username: '',
@@ -16,6 +17,8 @@ const RegisterForm = () => {
   };
   const doRegister = async () => {
     try {
+      setRegisterError('');
+      setSuccessMessage('');
       // eslint-disable-next-line react-hooks/immutability
       const userResponse = await getUsernameAvailable(inputs.username);
       // check also useEffects below!
@@ -25,6 +28,7 @@ const RegisterForm = () => {
       if (userResponse.available && emailResponse.available) {
         const result = await postRegister(inputs as RegisterCredentials);
         console.log('post registration result', result);
+        setSuccessMessage('Registration successful. You can now log in.');
       }
     } catch (error) {
       console.log((error as Error).message);
@@ -120,6 +124,9 @@ const RegisterForm = () => {
             <p className="text-sm text-red-500">{registerError}</p>
           )}
         </div>
+        {successMessage && (
+          <p className="text-sm text-emerald-400">{successMessage}</p>
+        )}
         <button
           className="mt-2 w-full rounded-md bg-stone-500 px-4 py-2 font-semibold transition hover:bg-stone-700"
           type="submit"
