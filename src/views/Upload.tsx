@@ -9,12 +9,12 @@ const Upload = () => {
   const initValues = {title: '', description: ''};
 
   const doUpload = async () => {
+    setUploading(true);
     const token = localStorage.getItem('token');
     if (!file || !token) {
       console.log('doUpload file or token falsy');
       return;
     }
-    setUploading(true);
     try {
       // TODO: implement real upload using API once available
       console.log('Simulating upload with file and metadata', {
@@ -26,8 +26,6 @@ const Upload = () => {
       resetForm();
     } catch (error) {
       console.log((error as Error).message);
-    } finally {
-      setUploading(false);
     }
   };
 
@@ -54,7 +52,7 @@ const Upload = () => {
 
   return (
     <>
-      <h1>Upload</h1>
+      <h2>Upload</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>
@@ -96,12 +94,7 @@ const Upload = () => {
           alt="preview"
           width="200"
         />
-        <button
-          type="submit"
-          disabled={file && inputs.title.length > 3 ? false : true}
-        >
-          Upload
-        </button>
+        <button type="submit">Start upload</button>
       </form>
       <button onClick={resetForm}>Reset</button>
       {uploading && <p>Uploading...</p>}
