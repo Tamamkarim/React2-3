@@ -42,6 +42,10 @@ export type UserResponse = {
   message?: string;
 };
 
+export type MessageResponse = {
+  message?: string;
+};
+
 export type AuthContextType = {
   user: UserWithNoPassword | null;
   loading: boolean;

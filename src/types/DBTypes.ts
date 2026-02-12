@@ -13,6 +13,12 @@ export type MediaItem = {
 
 export type MediaItemWithOwner = MediaItem & { username: string };
 
+export type Like = {
+  like_id: number;
+  media_id: number;
+  user_id: number;
+};
+
 export type UserWithNoPassword = {
   user_id?: number;
   username: string;
