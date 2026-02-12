@@ -1,3 +1,4 @@
+import React from 'react';
 import {useUserContext} from '../hooks/ContextHooks';
 
 const Profile = () => {
@@ -5,6 +6,7 @@ const Profile = () => {
 
   return (
     <>
+      {React.createElement('h2', null, 'Profile')}
       {user && (
         <article className="w-full rounded-md bg-stone-600">
           <div className="p-4">
