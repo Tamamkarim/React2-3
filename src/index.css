@@ -4,12 +4,16 @@
 
 @layer base {
   :root {
-    @apply bg-stone-600 text-stone-50 antialiased;
+    background-color: #1f2937; /* approx stone-800 */
+    color: #f9fafb;
+    -webkit-font-smoothing: antialiased;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
   }
 
   #root {
-    @apply m-auto max-w-7xl p-8;
+    margin: 0 auto;
+    max-width: 80rem;
+    padding: 2rem;
   }
 }

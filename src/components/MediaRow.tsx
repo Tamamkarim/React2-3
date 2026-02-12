@@ -9,40 +9,41 @@ const MediaRow = (props: {
   const {user} = useUserContext();
 
   return (
-    <article className="w-full rounded-md bg-stone-600">
-      <img
-        className="h-72 w-full rounded-t-md object-cover"
-        src={item.thumbnail}
-        alt={item.title}
-      />
-      <div className="p-4">
-        <h3 className="text-center text-2xl">{item.title}</h3>
-        <p className="max-w-full overflow-clip font-bold text-nowrap text-ellipsis text-stone-300">
-          {item.description}
-        </p>
-        <div className="my-2 rounded-md border-1 border-stone-400 p-2">
-          <p>
-            Created at: <br />{' '}
-            {new Date(item.created_at).toLocaleString('fi-FI')}
-          </p>
-          <p>Filesize: {(item.filesize / 1024 / 1024).toFixed(2)} MB</p>
-          <p>Mime-type: {item.media_type}</p>
-          <p>Owner: {item.username}</p>
-        </div>
-        <p>
+    <tr className="border-b border-stone-600 last:border-0 hover:bg-stone-700/40">
+      <td className="px-3 py-2 align-top">
+        <img
+          className="h-16 w-28 rounded object-cover"
+          src={item.thumbnail}
+          alt={item.title}
+        />
+      </td>
+      <td className="px-3 py-2 align-top font-semibold text-stone-50">
+        {item.title}
+      </td>
+      <td className="px-3 py-2 align-top max-w-xs text-stone-200">
+        {item.description}
+      </td>
+      <td className="px-3 py-2 align-top text-stone-200">
+        {new Date(item.created_at).toLocaleString('fi-FI')}
+      </td>
+      <td className="px-3 py-2 align-top text-stone-200">
+        {(item.filesize / 1024 / 1024).toFixed(2)} MB
+      </td>
+      <td className="px-3 py-2 align-top text-stone-200">
+        <div className="flex flex-col gap-1">
+          <span>{item.media_type}</span>
           <button
-            className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+            className="mt-1 bg-stone-500 p-1 text-center text-xs transition-all duration-500 ease-in-out hover:bg-stone-700"
             onClick={() => {
               setSelectedItem(item);
             }}
           >
             View
           </button>
-          {/* User exists and owns the media item or is an admin */}
           {user && (user.user_id === item.user_id || user?.level_name === 'Admin') && (
             <>
               <button
-                className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+                className="bg-stone-500 p-1 text-center text-xs transition-all duration-500 ease-in-out hover:bg-stone-700"
                 onClick={() => {
                   console.log('edit media item', item, 'current user', user);
                 }}
@@ -50,7 +51,7 @@ const MediaRow = (props: {
                 Edit
               </button>
               <button
-                className="block w-full bg-stone-500 p-2 text-center transition-all duration-500 ease-in-out hover:bg-stone-700"
+                className="bg-stone-500 p-1 text-center text-xs transition-all duration-500 ease-in-out hover:bg-stone-700"
                 onClick={() => {
                   console.log('delete media item');
                 }}
@@ -59,9 +60,9 @@ const MediaRow = (props: {
               </button>
             </>
           )}
-        </p>
-      </div>
-    </article>
+        </div>
+      </td>
+    </tr>
   );
 };
 
