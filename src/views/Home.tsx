@@ -53,6 +53,7 @@ const Home = () => {
               <MediaRow
                 key={item.media_id}
                 item={item}
+                index={index}
                 setSelectedItem={setSelectedItem}
               />
             ))}

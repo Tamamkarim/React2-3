@@ -1,21 +1,20 @@
-import type {MediaItemWithOwner} from '../types/DBTypes';
+import type {MediaItem} from '../types/DBTypes';
 import {useUserContext} from '../hooks/ContextHooks';
 
 const MediaRow = (props: {
-  item: MediaItemWithOwner;
-  setSelectedItem: (item: MediaItemWithOwner | undefined) => void;
+  item: MediaItem;
+  index: number;
+  setSelectedItem: (item: MediaItem | undefined) => void;
 }) => {
-  const {item, setSelectedItem} = props;
+  const {item, index, setSelectedItem} = props;
   const {user} = useUserContext();
 
   return (
     <tr className="border-b border-stone-600 last:border-0 hover:bg-stone-700/40">
       <td className="px-3 py-2 align-top">
-        <img
-          className="h-16 w-28 rounded object-cover"
-          src={item.thumbnail}
-          alt={item.title}
-        />
+        <div className="flex h-40 w-72 items-center justify-center border-2 border-stone-900 bg-stone-200 text-3xl font-semibold text-stone-400">
+          {`Thumb${index + 1}`}
+        </div>
       </td>
       <td className="px-3 py-2 align-top font-semibold text-stone-50">
         {item.title}
